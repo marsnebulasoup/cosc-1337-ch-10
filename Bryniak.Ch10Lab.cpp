@@ -27,6 +27,7 @@ struct Student {
   }  
 };
 
+void input(int&, string);
 void getStudentData(int, Student[]);
 
 int main()
@@ -34,9 +35,9 @@ int main()
   return 0;
 }
 
-void input(int *inp, string onError)
+void input(int &inp, string onError)
 {
-  cin >> *inp;
+  cin >> inp;
   if (cin.fail())
   {
     cout << onError;
@@ -51,14 +52,12 @@ void input(int *inp, string onError)
 
 void getStudentData(int students, Student studentData[])
 {
-  cout << STUDENT_MOVIES_PROMPT << endl;
+  cout << STUDENT_COUNT_PROMPT << endl;
   for (int i = 0; i < students; i++)
   {
     cout << i + 1 << ": ";
 
     Student *pCurrStudent = studentData + i;
-    int *pMoviesWatched = &pCurrStudent->moviesWatched;
-
-    input(pMoviesWatched, STUDENT_MOVIES_ERROR);
+    input(pCurrStudent->moviesWatched, STUDENT_MOVIES_ERROR);
   }
 }

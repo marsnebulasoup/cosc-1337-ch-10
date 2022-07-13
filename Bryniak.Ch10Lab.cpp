@@ -19,12 +19,19 @@ const string STUDENT_COUNT_PROMPT = "Enter the number of students surveyed: ";
 const string STUDENT_MOVIES_PROMPT = "Enter the number of movies each watched by each student.";
 const string STUDENT_MOVIES_ERROR = "Please enter an integer value greater than 0: ";
  
-struct Student {
+struct Student
+{
   int moviesWatched;
 
-  Student(int moviesWatched = 0) {
+  Student(int moviesWatched = 0)
+  {
     this->moviesWatched = moviesWatched;
-  }  
+  }
+
+  bool operator<(const Student &other)
+  {
+    return moviesWatched < other.moviesWatched;
+  }
 };
 
 void input(int&, string);

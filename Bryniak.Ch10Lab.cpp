@@ -34,8 +34,7 @@ struct Student
   }
 };
 
-void input(int&, string);
-void getStudentData(int, Student[]);
+void getStudentData(int, Student*);
 
 int main()
 {
@@ -57,7 +56,7 @@ void input(int &inp, string onError)
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
-void getStudentData(int students, Student studentData[])
+void getStudentData(int students, Student* studentData)
 {
   cout << STUDENT_MOVIES_PROMPT << endl;
   for (int i = 0; i < students; i++)

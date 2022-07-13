@@ -10,6 +10,7 @@ then computes the average number of movies watched per student.
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
+#include <limits>
 
 using namespace std;
 
@@ -25,7 +26,19 @@ struct Student {
   }  
 };
 
+void input(int*, string);
+
 int main()
 {
   return 0;
+}
+
+void input(int* inp, string onError) {
+  cin >> *inp;
+  if(cin.fail()) {
+    cout << onError;
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    input(inp, onError);
+  }
 }

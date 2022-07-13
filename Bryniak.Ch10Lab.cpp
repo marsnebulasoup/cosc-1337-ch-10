@@ -15,10 +15,14 @@ then computes the average number of movies watched per student.
 using namespace std;
 
 const string TITLE = "Movie Statistics Calculator";
+const string DESCRIPTION = "This program prompts the user for the number of students surveyed and how many movies they watched, then computes the average number of movies watched per student.";
 const string STUDENT_COUNT_PROMPT = "Enter the number of students surveyed: ";
 const string STUDENT_MOVIES_PROMPT = "Enter the number of movies each watched by each student.";
 const string STUDENT_MOVIES_ERROR = "Please enter an integer value greater than 0: ";
- 
+const string STUDENT_COUNT_ERROR = "Error: Too many students.";
+const string OUTPUT_HEADER = "Number of Movies Watched\n------------------------";
+const string OUTPUT_FOOTER = "---------\nAverage: ";
+
 struct Student
 {
   int moviesWatched;
@@ -40,6 +44,35 @@ void display(int, Student*, double);
 
 int main()
 {
+  int studentCount;
+  double averageMoviesWatched;
+  Student *studentData;
+
+  cout << TITLE << endl
+       << DESCRIPTION << endl
+       << endl
+       << STUDENT_COUNT_PROMPT;
+
+  bool validStudentCount = true;
+  do
+  {
+    input(studentCount, STUDENT_MOVIES_ERROR);
+    studentData = new Student[studentCount];
+    if (studentData == nullptr)
+    {
+      cout << STUDENT_COUNT_ERROR << endl;
+      validStudentCount = false;
+    }
+  } while (!validStudentCount);
+
+  getStudentData(studentCount, studentData);
+  sort(studentData, studentData + studentCount);
+  averageMoviesWatched = computeAverage(studentCount, studentData);
+  display(studentCount, studentData, averageMoviesWatched);
+
+  delete[] studentData;
+  studentData = nullptr;
+
   return 0;
 }
 

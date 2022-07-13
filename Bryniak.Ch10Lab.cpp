@@ -7,6 +7,16 @@ This program prompts the user for the number of students surveyed and how many m
 then computes the average number of movies watched per student.
 */
 
+
+
+struct Student {
+  int moviesWatched;
+  
+  Student(int moviesWatched = 0) {
+    this->moviesWatched = moviesWatched;
+  }  
+};
+
 int main()
 {
   return 0;

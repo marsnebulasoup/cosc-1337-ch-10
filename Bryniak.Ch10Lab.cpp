@@ -38,6 +38,7 @@ struct Student
   }
 };
 
+void input(int &, string);
 void getStudentData(int, Student*);
 double computeAverage(int, Student*);
 void display(int, Student*, double);

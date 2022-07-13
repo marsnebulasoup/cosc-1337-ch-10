@@ -35,6 +35,7 @@ struct Student
 };
 
 void getStudentData(int, Student*);
+double computeAverage(int, Student*);
 
 int main()
 {
@@ -66,4 +67,18 @@ void getStudentData(int students, Student* studentData)
     Student *pCurrStudent = studentData + i;
     input(pCurrStudent->moviesWatched, STUDENT_MOVIES_ERROR);
   }
+}
+
+double computeAverage(int students, Student* studentData)
+{
+  double average = 0;
+  double total = 0;
+
+  for (int i = 0; i < students; i++)
+  {
+    total += (studentData + i)->moviesWatched;
+  }
+  average = total / students;
+
+  return average;
 }

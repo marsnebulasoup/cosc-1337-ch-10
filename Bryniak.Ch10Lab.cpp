@@ -33,12 +33,18 @@ int main()
   return 0;
 }
 
-void input(int* inp, string onError) {
+void input(int *inp, string onError)
+{
   cin >> *inp;
-  if(cin.fail()) {
+  if (cin.fail())
+  {
     cout << onError;
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     input(inp, onError);
   }
+
+  cin.clear();
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
 }

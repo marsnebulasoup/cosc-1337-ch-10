@@ -17,6 +17,7 @@ using namespace std;
 const string TITLE = "Movie Statistics Calculator";
 const string STUDENT_COUNT_PROMPT = "Enter the number of students surveyed: ";
 const string STUDENT_MOVIES_PROMPT = "Enter the number of movies each watched by each student.";
+const string STUDENT_MOVIES_ERROR = "Please enter an integer value greater than 0: ";
  
 struct Student {
   int moviesWatched;
@@ -26,7 +27,7 @@ struct Student {
   }  
 };
 
-void input(int*, string);
+void getStudentData(int, Student[]);
 
 int main()
 {
@@ -47,4 +48,17 @@ void input(int *inp, string onError)
   cin.clear();
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
+
+void getStudentData(int students, Student studentData[])
+{
+  cout << STUDENT_MOVIES_PROMPT << endl;
+  for (int i = 0; i < students; i++)
+  {
+    cout << i + 1 << ": ";
+
+    Student *pCurrStudent = studentData + i;
+    int *pMoviesWatched = &pCurrStudent->moviesWatched;
+
+    input(pMoviesWatched, STUDENT_MOVIES_ERROR);
+  }
 }

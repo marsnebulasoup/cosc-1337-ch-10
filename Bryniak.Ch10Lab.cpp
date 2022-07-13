@@ -52,7 +52,7 @@ void input(int &inp, string onError)
 
 void getStudentData(int students, Student studentData[])
 {
-  cout << STUDENT_COUNT_PROMPT << endl;
+  cout << STUDENT_MOVIES_PROMPT << endl;
   for (int i = 0; i < students; i++)
   {
     cout << i + 1 << ": ";

@@ -36,6 +36,7 @@ struct Student
 
 void getStudentData(int, Student*);
 double computeAverage(int, Student*);
+void display(int, Student*, double);
 
 int main()
 {
@@ -81,4 +82,15 @@ double computeAverage(int students, Student* studentData)
   average = total / students;
 
   return average;
+}
+
+void display(int students, Student* studentData, double average)
+{
+  cout << endl
+       << OUTPUT_HEADER << endl;
+  for (int i = 0; i < students; i++)
+  {
+    cout << fixed << setprecision(1) << (studentData + i)->moviesWatched << endl;
+  }
+  cout << OUTPUT_FOOTER << average << endl;
 }
